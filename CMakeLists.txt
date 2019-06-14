@@ -4,6 +4,12 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_DOC "Build documentation" OFF)
+option(BUILD_STATIC "Build static uuu binary" OFF)
+
+if (BUILD_STATIC)
+	set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+	set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
+endif (BUILD_STATIC)
 
 add_subdirectory(libuuu)
 add_subdirectory(uuu)
